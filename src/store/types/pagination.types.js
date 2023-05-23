@@ -1,0 +1,1 @@
+export const SET_PAGINAION_DATA = 'SET_PAGINAION_DATA'
