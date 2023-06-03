@@ -45,6 +45,7 @@
                 font-size: 20px;
             }
 
+            .create-memories,
             .logout-button {
                 height: 40px;
                 width: 80px;
@@ -56,6 +57,13 @@
                 color: white;
                 background-color: #f50157;
                 border: 0;
+            }
+
+            .create-memories {
+                width: auto;
+                padding: 0px 10px;
+                margin-right: 10px;
+                background-color: #4050b5;
             }
         }
 

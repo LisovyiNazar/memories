@@ -80,10 +80,11 @@ const Form = () => {
                     type="text" 
                     required
                     value={postData.tags}
-                    onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
+                    onChange={(e) => setPostData({ ...postData, tags: e.target.value.trim().split(',') })}
                 ></input>
                 <span className="bar"></span>
                 <label>Tags</label>
+                <span className='separator' >Separate by commas</span>
             </div>
             <div className="image">
                 <FileBase 

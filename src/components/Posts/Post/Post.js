@@ -34,7 +34,7 @@ const Post = ({ post, editMode = true }) => {
                     <img 
                         className='post-image'
                         alt=''
-                        src={post.selectedFile ? post.selectedFile : 'https://www.arungudelli.com/tutorial/css/auto-resize-an-image-to-fit-into-a-html-div-using-css/Auto-resize-image_hua7cbf3f83f09813e25d06413cbc6df69_18316_640x0_resize_q75_h2_box.webp'} 
+                        src={post.selectedFile ? post.selectedFile : 'https://dizziness-and-balance.com/treatment/images/airplane.jpg'} 
                     />
                     <div className='settings-container'>
                         <div className='settings'>
