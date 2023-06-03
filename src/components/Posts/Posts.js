@@ -9,6 +9,8 @@ const Posts = () => {
     const dispath = useDispatch()
     const [page, setPage] = useState(1)
 
+    const { user } = useSelector(state => state.auth)
+
     useEffect(() => {
         dispath(getPosts(page))
     }, [dispath, page])
@@ -45,7 +47,7 @@ const Posts = () => {
                 <div className='posts-wrapper'>
                     {
                         posts.map(post => (
-                            <Post key={post._id} post={post} editMode={false} />
+                            <Post key={post._id} post={post} editMode={user?.type === 'admin' ? true : false} />
                         ))
                     }
                     <div className='pagination-wrapper'>

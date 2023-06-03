@@ -5,7 +5,6 @@ import { PostForEditContext } from '../../../store/context/postForEdit.context'
 import { AiTwotoneSetting, AiOutlineHeart } from 'react-icons/ai'
 import moment from 'moment'
 import './index.scss'
-import { Link } from 'react-router-dom'
 
 const Post = ({ post, editMode = true }) => {
     const dispath = useDispatch()
@@ -45,7 +44,7 @@ const Post = ({ post, editMode = true }) => {
                             {
                                 isSettingsOpen && (
                                     <>
-                                        <button type='button' onClick={() => { setPostForEdit(post) }}>Edit</button>
+                                        { user.type !== 'admin' && <button type='button' onClick={() => { setPostForEdit(post) }}>Edit</button>}
                                         <button type='button' onClick={() => { deletePostHandler(post._id) }}>Delete</button>
                                     </>
                                 )
@@ -68,7 +67,7 @@ const Post = ({ post, editMode = true }) => {
                             />
                             <div>{post.likeCount}</div>
                         </div>
-                        <span>Created by <Link to={`/user/@${ post.creator.nickName }`}>{ post.creator.nickName }</Link> {moment(post.createdAt).fromNow()}</span>
+                        <span>Created by @{ post.creator.nickName } {moment(post.createdAt).fromNow()}</span>
                     </div>
                 </div>
             </div>

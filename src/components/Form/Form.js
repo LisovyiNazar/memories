@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { PostForEditContext } from '../../store/context/postForEdit.context'
 import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,13 +6,15 @@ import { createPost, updatePost } from '../../store/actions/post.actions'
 import './index.scss'
 
 const Form = () => {
-    const initInputValue = {
-        creator: '',
-        title: '',
-        message: '',
-        tags: '',
-        selectedFile: ''
-    }
+    const initInputValue = useMemo(() => {
+        return {
+            creator: '',
+            title: '',
+            message: '',
+            tags: '',
+            selectedFile: ''
+        }
+    }, [])
 
     const { user } = useSelector(state => state.auth)
 
@@ -23,7 +25,7 @@ const Form = () => {
     useEffect(() => {
         if (postForEdit) setPostData(postForEdit)
         else setPostData(initInputValue)
-    }, [postForEdit])
+    }, [postForEdit, initInputValue])
 
     const dispath = useDispatch()
 
@@ -64,12 +66,12 @@ const Form = () => {
                 <label>Title</label>
             </div>
             <div className="group"> 
-                <input 
+                <textarea 
                     type="text" 
                     required
                     value={postData.message}
                     onChange={(e) => setPostData({ ...postData, message: e.target.value })}
-                ></input>
+                ></textarea>
                 <span className="bar"></span>
                 <label>Message</label>
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Paper, Container, Typography, Grid, Button } from '@material-ui/core'
+import { Avatar, Typography, Grid, Button } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Input from './Input'
 import { GoogleLogin } from '@react-oauth/google'
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
 import useStyles from './styles'
 import { useNavigate } from 'react-router-dom'
+import './index.scss'
 
 const Auth = () => {
     const classes = useStyles()
@@ -76,18 +77,15 @@ const Auth = () => {
     }
 
     return (
-        <Container
-            component='main'
+        <div
+            className='auth-container'
             maxWidth='xs'
         >
-            <Paper
-                className={classes.paper}
-                elevation={3}
-            >
+            <div className='paper'>
                 
                 {
                     !isNickName && (
-                        <>
+                        <div className='logo'>
                             <Avatar className={classes.avatar}>
                                 <LockOutlinedIcon />
                             </Avatar>
@@ -96,7 +94,7 @@ const Auth = () => {
                                     isSignUp ? 'Sign Up' :  'Sing In'
                                 }
                             </Typography>
-                        </>
+                        </div>
                     )
                 }
                 <form 
@@ -113,7 +111,7 @@ const Auth = () => {
                                     handleChange={handleChange}
                                     autoFocus
                                 />
-                                <>{ formErrors.nickName }</>
+                                <div className='form-error'>{ formErrors.nickName }</div>
                                 <Button
                                     type='submit'
                                     fullWidth
@@ -154,7 +152,7 @@ const Auth = () => {
                                                     required={false}
                                                     handleChange={handleChange}
                                                 />
-                                                <>{ formErrors.nickName }</>
+                                                <div className='form-error'>{ formErrors.nickName }</div>
                                             </>
                                         )
                                     }
@@ -164,7 +162,7 @@ const Auth = () => {
                                         label='Email Address'
                                         handleChange={handleChange}
                                     />
-                                    <>{ formErrors.email }</>
+                                    <div className='form-error'>{ formErrors.email }</div>
                                     <Input
                                         name='password'
                                         type={showPassword ? 'text' : 'password'}
@@ -172,7 +170,7 @@ const Auth = () => {
                                         handleChange={handleChange}
                                         handleShowPassword={handleShowPassword}
                                     />
-                                    <>{ formErrors.password }</>
+                                    <div className='form-error'>{ formErrors.password }</div>
                                     {
                                         isSignUp && (
                                             <>
@@ -182,7 +180,7 @@ const Auth = () => {
                                                     label='Confirm Password'
                                                     handleChange={handleChange}
                                                 />
-                                                { formErrors.confirmPassword }
+                                                <div className='form-error'>{ formErrors.confirmPassword }</div>
                                             </>
                                         )
                                     }
@@ -220,9 +218,8 @@ const Auth = () => {
                         )
                     }
                 </form>
-                
-            </Paper>
-        </Container>
+            </div>
+        </div>
     )
 }
 
