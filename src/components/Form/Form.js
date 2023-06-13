@@ -49,6 +49,11 @@ const Form = () => {
         setPostData(initInputValue)
     }
 
+    console.log(user);
+    if (user && user?.type === 'admin') {
+        return null
+    }
+
     return (
         <form
             className='memories-form'

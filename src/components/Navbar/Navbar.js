@@ -24,9 +24,16 @@ const Navbar = () => {
                     <Link to={`/user/${ user?.nickName }`} className='user-name'>
                     @{ user?.nickName }
                     </Link>
-                    <Link to={`/user/${ user?.nickName }`} className='create-memories'>
-                        Create Memories
-                    </Link>
+                    {
+                        user?.type === 'admin' 
+                        ? null
+                        : (
+                            <Link to={`/user/${ user?.nickName }`} className='create-memories'>
+                                Create Memories
+                            </Link>
+                        )
+                    }
+                    
                     <button 
                         type='button' 
                         className='logout-button'
